@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+cat <<EOF
+---
+default_process_types:
+  web: python boot.py
+EOF
+

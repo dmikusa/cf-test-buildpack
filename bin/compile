@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+echo "Running cache test..."
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+if [ ! -d "$BUILD_DIR" ]; then
+  echo "Build directory [$BUILD_DIR] does not exist, creating"
+  mkdir -p "$BUILD_DIR"
+else
+  echo "Build directory [$BUILD_DIR] exists"
+fi
+
+if [ ! -d "$CACHE_DIR" ]; then
+  echo "Cache directory [$CACHE_DIR] does not exist, creating"
+  mkdir -p "$CACHE_DIR"
+else
+  echo "Cache directory [$CACHE_DIR] exists"
+fi
+
+echo "Moving to the cache dir..."
+cd "$CACHE_DIR"
+echo "Now in [$(pwd)]"
+
+echo "Directory listing:"
+ls -la
+
+if [ ! -f apache-tomcat-7.0.41.tar.gz ]; then
+    echo "Downloading a large file..."
+    curl -s -o apache-tomcat-7.0.41.tar.gz http://apache.petsads.us/tomcat/tomcat-7/v7.0.41/bin/apache-tomcat-7.0.41.tar.gz
+    curl -s -o apache-tomcat-7.0.41.tar.gz.md5 http://www.apache.org/dist/tomcat/tomcat-7/v7.0.41/bin/apache-tomcat-7.0.41.tar.gz.md5
+fi
+
+echo "Checking MD5 sum"
+md5sum -c apache-tomcat-7.0.41.tar.gz.md5
+
+cd ../
+echo "Creating script to start a small Python Web server"
+cat > "$BUILD_DIR/boot.py" <<EOF
+#!/usr/bin/env python
+#
+# Simple HTTP Server for accessing files in target director
+#
+import SimpleHTTPServer
+import SocketServer
+import os
+import sys
+
+if len(sys.argv) == 2:
+    print 'Serving files from [%s]' % sys.argv[1]
+    os.chdir(sys.argv[1])
+else:
+    print 'Service files from [%s]' % os.getcwd()
+
+httpd = SocketServer.TCPServer(
+    (os.environ.get('VCAP_APP_HOST', 'localhost'),
+     int(os.environ.get('VCAP_APP_PORT', 8080))),
+    SimpleHTTPServer.SimpleHTTPRequestHandler)
+httpd.serve_forever()
+EOF
+
