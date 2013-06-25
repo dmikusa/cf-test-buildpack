@@ -1,24 +1,20 @@
-CloudFoundry Caching Test Buildpack
-===================================
+CloudFoundry Test Buildpack
+===========================
 
-This is a simple build pack that was written to test the capabilities of the cache directory, which is the second parameter passed to the ```bin/compile``` script.
+This is a simple build pack that just dumps information about the build pack environment, in particular during the compile process.
 
+Usage
+-----
 
-Expected Behavior
------------------
+1. Create a project folder and execute ```touch cache-test.txt``` inside that folder.  This file must exist or the test build pack will skip processing.
 
-As indicated [here](https://groups.google.com/a/cloudfoundry.org/forum/#!topic/vcap-dev/1c0TvJfjCOw).
+2. In the project directory, execute this command.
 
-"My understanding is that as currently implemented, the buildpack cache is for the lifetime of the application guid and does not have a size limit. It's only used during the buildpack compile process and is scoped to the application guid, not to the buildpack.
+```
+cf push --buildpack=https://github.com/dmikusa-pivotal/cf-test-buildpack.git
+```
 
-So if you push an app with the same app GUID (which is triggered by pushing an app with the name of an app that already exists in a targeted space), then the cache will be downloaded from the cloud controller blob store and made available to the buildpack compile process in the Warden container. If you want to delete the cache, currently you have to delete the application and repush it to start with an empty cache.
+3. You should see a bunch of information about the environment dumped to the screen during the compile phase.
 
-We realized during the implementation that having an unbounded cache is a not ideal and have work identified to address that.
+4. If you go to the URL for your application, there is a basic HTTP file server running which allows you to further explore the environment.
 
-We have a team that is working a lot with a Java buildpack and they believe that having a cache that is shared per-buildpack could be useful. We have not made final decisions about caching and buildpacks. Certainly there are additional improvements and optimizations to make."
-
-
-Results
--------
-
-Still a work in progress.
