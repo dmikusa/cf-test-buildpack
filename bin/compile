@@ -32,15 +32,6 @@ ls -laR /tmp/buildpacks
 echo "Listing Environment:"
 env
 
-if [ ! -f apache-tomcat-7.0.41.tar.gz ]; then
-    echo "Downloading a large file..."
-    curl -s -o apache-tomcat-7.0.41.tar.gz http://apache.petsads.us/tomcat/tomcat-7/v7.0.41/bin/apache-tomcat-7.0.41.tar.gz
-fi
-
-echo "Checking MD5 sum"
-curl -s -o apache-tomcat-7.0.41.tar.gz.md5 http://www.apache.org/dist/tomcat/tomcat-7/v7.0.41/bin/apache-tomcat-7.0.41.tar.gz.md5
-md5sum -c apache-tomcat-7.0.41.tar.gz.md5
-
 cd ../
 echo "Creating script to start a small Python Web server"
 cat > "$BUILD_DIR/boot.py" <<EOF
