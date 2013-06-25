@@ -27,7 +27,10 @@ echo "Directory listing:"
 ls -la
 
 echo "Listing Build Pack Directory:"
-ls -laR /tmp/buildpacks
+ls -la /tmp/buildpacks
+
+echo "Listing Build Pack Cache:"
+ls -la "$BUILDPACK_CACHE"
 
 echo "Listing Environment:"
 env
