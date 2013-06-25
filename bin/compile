@@ -20,6 +20,7 @@ else
   echo "Cache directory [$CACHE_DIR] exists"
 fi
 
+echo "The compile script is at [$0]"
 echo "The build pack is situated at [$BUILD_PACK_DIR]"
 
 echo "Moving to the cache dir..."
