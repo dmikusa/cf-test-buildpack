@@ -4,6 +4,7 @@ echo "Running cache test..."
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+BUILD_PACK_DIR=$(dirname $(dirname $0))
 
 if [ ! -d "$BUILD_DIR" ]; then
   echo "Build directory [$BUILD_DIR] does not exist, creating"
@@ -18,6 +19,8 @@ if [ ! -d "$CACHE_DIR" ]; then
 else
   echo "Cache directory [$CACHE_DIR] exists"
 fi
+
+echo "The build pack is situated at [$BUILD_PACK_DIR]"
 
 echo "Moving to the cache dir..."
 cd "$CACHE_DIR"
