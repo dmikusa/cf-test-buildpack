@@ -32,6 +32,9 @@ ls -la /tmp/buildpacks
 echo "Listing Build Pack Cache:"
 ls -la "$BUILDPACK_CACHE"
 
+echo "Listing Platform Config:"
+cat "$PLATFORM_CONFIG"
+
 echo "Listing Environment:"
 env
 
