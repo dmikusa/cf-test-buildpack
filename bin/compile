@@ -42,6 +42,11 @@ cat "$PLATFORM_CONFIG"
 echo "Listing Environment:"
 env
 
+echo "Listing script versions:"
+python -V
+ruby -v
+perl -v
+
 cd ../
 echo "Creating script to start a small Python Web server"
 cat > "$BUILD_DIR/boot.py" <<EOF
