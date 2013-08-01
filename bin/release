@@ -6,4 +6,3 @@ default_process_types:
   web: python boot.py /
 EOF
 
-exit -1
