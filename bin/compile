@@ -72,4 +72,3 @@ httpd = SocketServer.TCPServer(
 httpd.serve_forever()
 EOF
 
-exit -1
