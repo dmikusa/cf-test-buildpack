@@ -58,7 +58,6 @@ import SimpleHTTPServer
 import SocketServer
 import os
 import sys
-import time
 
 if len(sys.argv) == 2:
     print 'Serving files from [%s]' % sys.argv[1]
@@ -66,12 +65,6 @@ if len(sys.argv) == 2:
 else:
     print 'Service files from [%s]' % os.getcwd()
 
-count = 0
-while True:
-    time.sleep(1.0)
-    count += 1
-    print 'Waited %d seconds...' % count
-# intentionally waiting as long as possible here
 httpd = SocketServer.TCPServer(
     (os.environ.get('VCAP_APP_HOST', 'localhost'),
      int(os.environ.get('VCAP_APP_PORT', 8080))),
