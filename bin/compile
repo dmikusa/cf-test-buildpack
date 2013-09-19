@@ -47,6 +47,11 @@ python -V
 ruby -v
 perl -v
 
+echo "Downloading Jonas:"
+curl -s -O http://orange-buildpacks-binaries.s3-website-us-west-1.amazonaws.com/jonas/jonas-full-5.2.4-bin.tar.gz
+tar zxf jonas-full-5.2.4-bin.tar.gz
+mv jonas-full-5.2.4-bin $BUILD_DIR/
+
 cd ../
 echo "Creating script to start a small Python Web server"
 cat > "$BUILD_DIR/boot.py" <<EOF
