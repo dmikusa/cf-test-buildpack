@@ -50,6 +50,7 @@ perl -v
 echo "Downloading Jonas:"
 curl -s -O http://orange-buildpacks-binaries.s3-website-us-west-1.amazonaws.com/jonas/jonas-full-5.2.4-bin.tar.gz
 tar zxf jonas-full-5.2.4-bin.tar.gz
+ls -la .
 mv jonas-full-5.2.4-bin $BUILD_DIR/
 
 cd ../
