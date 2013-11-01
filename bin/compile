@@ -53,6 +53,10 @@ perl -v
 #ls -la .
 #mv jonas-full-5.2.4 $BUILD_DIR/
 
+echo "Sleep Test.  Sleeping for 60 seconds..."
+sleep 60
+echo "Done"
+
 cd ../
 echo "Creating script to start a small Python Web server"
 cat > "$BUILD_DIR/boot.py" <<EOF
