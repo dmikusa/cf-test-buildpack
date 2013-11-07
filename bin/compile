@@ -54,7 +54,7 @@ perl -v
 #mv jonas-full-5.2.4 $BUILD_DIR/
 
 echo "Output large amount of data"
-for i in `seq 1 10000`; do
+for i in `seq 1 100000`; do
     echo "Hello World!"
 done
 
