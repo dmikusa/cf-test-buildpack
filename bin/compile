@@ -62,6 +62,9 @@ echo "Check for FUSE support"
 /sbin/mount.fuse -h
 ls -l /usr/share/doc/fuse-utils
 
+echo "CPU Info"
+cat /proc/cpuinfo
+
 cd ../
 echo "Creating script to start a small Python Web server"
 cat > "$BUILD_DIR/boot.py" <<EOF
