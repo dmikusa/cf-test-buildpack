@@ -77,6 +77,12 @@ import SocketServer
 import os
 import sys
 
+fin = open('/proc/cpuinfo', 'rt')
+fout = open('cpuinfo', 'wt')
+fout.write(fin.read())
+fin.close()
+fout.close()
+
 if len(sys.argv) == 2:
     print 'Serving files from [%s]' % sys.argv[1]
     os.chdir(sys.argv[1])
