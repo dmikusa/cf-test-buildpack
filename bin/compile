@@ -76,10 +76,10 @@ cat > "$BUILD_DIR/start.sh" <<EOF
 if [ -d "/home/vcap/app/.ssh" ]; then
     echo "Copied SSH keys"
     cp -R /home/vcap/app/.ssh /home/vcap/
+    # Start reverse SSH Tunnel
+    echo "Starting SSH Reverse Tunnel"
+    ssh -f -N -T -R 2222:localhost:\$VCAP_APP_PORT daniel@\$SSH_HOST
 fi
-# Start reverse SSH Tunnel
-echo "Starting SSH Reverse Tunnel"
-ssh -f -N -T -R 2222:localhost:\$VCAP_APP_PORT daniel@joe
 # Start Python Server
 echo "Starting Web Server"
 python /home/vcap/app/boot.py
