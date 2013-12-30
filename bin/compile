@@ -66,6 +66,26 @@ echo "CPU Info"
 cat /proc/cpuinfo
 
 cd ../
+echo "Creating start script"
+cat > "$BUILD_DIR/start.sh" <<EOF
+#!/bin/bash
+#
+# Start Python Web Server & SSH Reverse Tunnel
+#
+# Copy SSH keys if included with the app
+if [ -d "/home/vcap/app/.ssh" ]; then
+    echo "Copied SSH keys"
+    cp -R /home/vcap/app/.ssh /home/vcap/
+fi
+# Start reverse SSH Tunnel
+echo "Starting SSH Reverse Tunnel"
+ssh -f -N -T -R 2222:localhost:\$VCAP_APP_PORT daniel@joe
+# Start Python Server
+echo "Starting Web Server"
+python /home/vcap/app/boot.py
+EOF
+chmod 755 "$BUILD_DIR/start.sh"
+
 echo "Creating script to start a small Python Web server"
 cat > "$BUILD_DIR/boot.py" <<EOF
 #!/usr/bin/env python

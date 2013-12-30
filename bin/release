@@ -3,6 +3,6 @@
 cat <<EOF
 ---
 default_process_types:
-  web: python boot.py /
+  web: ./start.sh
 EOF
 
