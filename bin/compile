@@ -82,7 +82,7 @@ if [ -d "/home/vcap/app/.ssh" ]; then
 fi
 # Start Python Server
 echo "Starting Web Server"
-python /home/vcap/app/boot.py
+python /home/vcap/app/boot.py /
 EOF
 chmod 755 "$BUILD_DIR/start.sh"
 
