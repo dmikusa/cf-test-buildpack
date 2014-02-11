@@ -81,11 +81,12 @@ if [ -d "/home/vcap/app/.ssh" ]; then
     ssh -f -N -T -R 2222:localhost:\$VCAP_APP_PORT daniel@\$SSH_HOST
 fi
 # Start Python Server
-#echo "Starting Web Server"
-#python /home/vcap/app/boot.py /
+echo "Starting Web Server"
+python /home/vcap/app/boot.py /
+
 # Start Web Socket Server
-echo "Starting WebSocketD"
-curl -s https://raw.github.com/dmikusa-pivotal/cf-debug-console/master/debug.sh | bash
+#echo "Starting WebSocketD"
+#curl -s https://raw.github.com/dmikusa-pivotal/cf-debug-console/master/debug.sh | bash
 EOF
 chmod 755 "$BUILD_DIR/start.sh"
 
