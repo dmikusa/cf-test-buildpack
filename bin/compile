@@ -64,8 +64,8 @@ perl -v
 #/sbin/mount.fuse -h
 #ls -l /usr/share/doc/fuse-utils
 
-#echo "CPU Info"
-#cat /proc/cpuinfo
+echo "CPU Info"
+cat /proc/cpuinfo
 
 echo "Look for staging_info.yml file"
 cat "$BUILD_DIR/staging_info.yml"
