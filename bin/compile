@@ -11,6 +11,8 @@ if [ ! -d "$BUILD_DIR" ]; then
   mkdir -p "$BUILD_DIR"
 else
   echo "Build directory [$BUILD_DIR] exists"
+  echo "Build directory contents..."
+  ls -lRh $BUILD_DIR
 fi
 
 if [ ! -d "$CACHE_DIR" ]; then
@@ -58,12 +60,15 @@ perl -v
 #    echo "Hello World!"
 #done
 
-echo "Check for FUSE support"
-/sbin/mount.fuse -h
-ls -l /usr/share/doc/fuse-utils
+#echo "Check for FUSE support"
+#/sbin/mount.fuse -h
+#ls -l /usr/share/doc/fuse-utils
 
-echo "CPU Info"
-cat /proc/cpuinfo
+#echo "CPU Info"
+#cat /proc/cpuinfo
+
+echo "Look for staging_info.yml file"
+cat "$BUILD_DIR/staging_info.yml"
 
 cd ../
 echo "Creating start script"
