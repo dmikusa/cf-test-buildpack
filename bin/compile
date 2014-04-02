@@ -60,9 +60,9 @@ perl -v
 #    echo "Hello World!"
 #done
 
-#echo "Check for FUSE support"
-#/sbin/mount.fuse -h
-#ls -l /usr/share/doc/fuse-utils
+echo "Check for FUSE support"
+/sbin/mount.fuse -h
+ls -l /usr/share/doc/fuse-utils
 
 echo "CPU Info"
 cat /proc/cpuinfo
