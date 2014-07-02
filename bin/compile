@@ -38,27 +38,22 @@ ls -la /tmp/buildpacks
 echo "Listing Build Pack Cache:"
 ls -la "$BUILDPACK_CACHE"
 
-echo "Listing Platform Config:"
-cat "$PLATFORM_CONFIG"
-
 echo "Listing Environment:"
 env
 
+echo "Listing OS Info:"
+cat /etc/issue
+
 echo "Listing script versions:"
 python -V
+echo
 ruby -v
+echo
 perl -v
 
-#echo "Downloading Jonas:"
-#curl -s -O http://orange-buildpacks-binaries.s3-website-us-west-1.amazonaws.com/jonas/jonas-full-5.2.4-bin.tar.gz
-#tar zxf jonas-full-5.2.4-bin.tar.gz
-#ls -la .
-#mv jonas-full-5.2.4 $BUILD_DIR/
-
-#echo "Output large amount of data"
-#for i in `seq 1 100000`; do
-#    echo "Hello World!"
-#done
+echo "User Limits:"
+ulimit -a
+echo
 
 echo "Check for FUSE support"
 /sbin/mount.fuse -h
