@@ -6,6 +6,8 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 BUILD_PACK_DIR=$(dirname $(dirname $0))
 
+echo "All arguments [$@]"
+
 if [ ! -d "$BUILD_DIR" ]; then
   echo "Build directory [$BUILD_DIR] does not exist, creating"
   mkdir -p "$BUILD_DIR"
