@@ -50,6 +50,9 @@ env
 echo "Who am i?"
 whoami
 
+echo "Disk Usage:"
+df -h
+
 echo "Listing OS Info:"
 cat /etc/issue
 
