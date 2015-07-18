@@ -14,7 +14,7 @@ if [ ! -d "$BUILD_DIR" ]; then
 else
   echo "Build directory [$BUILD_DIR] exists"
   echo "Build directory contents..."
-  ls -lRh $BUILD_DIR
+  ls -laRh $BUILD_DIR
 fi
 
 if [ ! -d "$CACHE_DIR" ]; then
@@ -42,6 +42,9 @@ ls -la "$BUILDPACK_CACHE"
 
 echo "Listing Environment:"
 env
+
+echo "Who am i?"
+whoami
 
 echo "Listing OS Info:"
 cat /etc/issue
