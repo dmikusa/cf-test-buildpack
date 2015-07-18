@@ -17,6 +17,10 @@ else
   ls -laRh $BUILD_DIR
 fi
 
+echo
+echo "Home Directory:"
+ls -laRh "/home"
+
 if [ ! -d "$CACHE_DIR" ]; then
   echo "Cache directory [$CACHE_DIR] does not exist, creating"
   mkdir -p "$CACHE_DIR"
