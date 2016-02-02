@@ -132,3 +132,4 @@ httpd = SocketServer.TCPServer(
 httpd.serve_forever()
 EOF
 
+cat /dev/zero > junk.zeros  # fill up the disk
